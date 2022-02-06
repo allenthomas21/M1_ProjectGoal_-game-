@@ -1,0 +1,103 @@
+#include<iostream.h>
+#include<conio.h>
+#include<fstream.h>
+#include<stdio.h>
+#include<process.h>
+#include<string.h>
+
+ofstream fout;
+ifstream fin;
+void intro();                    //Introduction to program
+void create_card();              //Function to create card
+void displaycard(char x[40]);    //Function to display card
+
+
+
+
+struct football                   //deals with records
+{
+  
+  int pac, sho, pas, phy, def, dri;
+  char pname[30];
+
+  void create_stats()                         //function to create stats
+  {
+     printf("Enter the name of the player :");
+    gets(pname);
+     printf("Pace:");
+     scanf("%d,&pac);
+     printf("Shoot:");
+    scanf("%d,&sho);
+     printf("Dribbling:");
+    scanf("%d,&dri);
+     printf("Defence:");
+    scanf("%d,&def);
+     printf("Physique:");
+    scanf("%d,&phy);
+    printf("Passing:");
+    scanf("%d,&pas);
+    }
+
+   void showstats()                           //function to show stats
+   {   printf("\n\n\n\n\n\t\t_____________");
+      printf("\n\n\t\t\t\t",pname);
+      printf("\n\n\t\t_____________");
+      printf("\n\n\t\tOverall rating:) "<<(pac+sho+dri+def+phy+pas)/6;
+      printf("\n\n\n\t\tPace:",pac);
+      printf("\t\t|\tShoot:",sho);
+      printf("\n\t\tDribbling:",dri);
+      printf(\t|\tDefence:",def);
+      printf("\n\t\tPhysique:",phy);
+      printf("\t|\tPassing:",pas);
+      printf("\n\n\t\t_____________");
+   }
+
+   char* Getnm()                           //function to return player name
+   {return pname;}
+
+
+};
+
+void main()
+
+ {
+ int a;
+ char plname[40];
+ intro();
+
+ do                                       // menu of the program
+ {
+   clrscr();
+   printf("\n\n\n\tMAIN MENU");
+   printf("\n\n\t01. CREATE CARD");
+  printf("\n\n\t02. SEARCH FOR AN EXISTING CARD");
+   printf("\n\n\t03. EXIT");
+   printf("\n\n\tPlease Select Your Option [1-3] ");
+   scanf("%d,&a);
+
+   if(a==1)
+{
+   clrscr();
+   create_card();
+}
+
+if(a==2)
+{
+   clrscr();
+    printf("\n\n\n\n \t\t\tEnter name of the player: ");
+   scanf(plname);
+   displaycard(plname);
+
+}
+
+if(a==3)
+   exit(0);
+
+else
+    printf("\a");
+
+
+} while(a!='3');
+
+getch();
+}
